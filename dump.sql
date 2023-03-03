@@ -5,7 +5,7 @@
 -- Dumped from database version 14.4 (Debian 14.4-1.pgdg110+1)
 -- Dumped by pg_dump version 14.5
 
--- Started on 2023-03-03 22:00:47 UTC
+-- Started on 2023-03-03 23:38:57 UTC
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -23,7 +23,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 214 (class 1259 OID 35382)
+-- TOC entry 212 (class 1259 OID 35382)
 -- Name: sessions; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -37,7 +37,7 @@ CREATE TABLE public.sessions (
 
 
 --
--- TOC entry 213 (class 1259 OID 35381)
+-- TOC entry 211 (class 1259 OID 35381)
 -- Name: sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -51,8 +51,8 @@ CREATE SEQUENCE public.sessions_id_seq
 
 
 --
--- TOC entry 3342 (class 0 OID 0)
--- Dependencies: 213
+-- TOC entry 3343 (class 0 OID 0)
+-- Dependencies: 211
 -- Name: sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -60,7 +60,7 @@ ALTER SEQUENCE public.sessions_id_seq OWNED BY public.sessions.id;
 
 
 --
--- TOC entry 212 (class 1259 OID 35365)
+-- TOC entry 214 (class 1259 OID 35400)
 -- Name: shortens; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -69,12 +69,13 @@ CREATE TABLE public.shortens (
     url text NOT NULL,
     "shortUrl" text NOT NULL,
     "userId" integer NOT NULL,
+    "visitCount" integer DEFAULT 0 NOT NULL,
     "createdAt" timestamp without time zone DEFAULT now() NOT NULL
 );
 
 
 --
--- TOC entry 211 (class 1259 OID 35364)
+-- TOC entry 213 (class 1259 OID 35399)
 -- Name: shortens_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -88,8 +89,8 @@ CREATE SEQUENCE public.shortens_id_seq
 
 
 --
--- TOC entry 3343 (class 0 OID 0)
--- Dependencies: 211
+-- TOC entry 3344 (class 0 OID 0)
+-- Dependencies: 213
 -- Name: shortens_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -125,7 +126,7 @@ CREATE SEQUENCE public.users_id_seq
 
 
 --
--- TOC entry 3344 (class 0 OID 0)
+-- TOC entry 3345 (class 0 OID 0)
 -- Dependencies: 209
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -134,7 +135,7 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- TOC entry 3181 (class 2604 OID 35385)
+-- TOC entry 3179 (class 2604 OID 35385)
 -- Name: sessions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -142,7 +143,7 @@ ALTER TABLE ONLY public.sessions ALTER COLUMN id SET DEFAULT nextval('public.ses
 
 
 --
--- TOC entry 3179 (class 2604 OID 35368)
+-- TOC entry 3182 (class 2604 OID 35403)
 -- Name: shortens id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -158,7 +159,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
--- TOC entry 3193 (class 2606 OID 35391)
+-- TOC entry 3190 (class 2606 OID 35391)
 -- Name: sessions sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -167,7 +168,7 @@ ALTER TABLE ONLY public.sessions
 
 
 --
--- TOC entry 3195 (class 2606 OID 35393)
+-- TOC entry 3192 (class 2606 OID 35393)
 -- Name: sessions sessions_token_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -176,7 +177,7 @@ ALTER TABLE ONLY public.sessions
 
 
 --
--- TOC entry 3189 (class 2606 OID 35373)
+-- TOC entry 3194 (class 2606 OID 35409)
 -- Name: shortens shortens_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -185,7 +186,7 @@ ALTER TABLE ONLY public.shortens
 
 
 --
--- TOC entry 3191 (class 2606 OID 35375)
+-- TOC entry 3196 (class 2606 OID 35411)
 -- Name: shortens shortens_shortUrl_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -194,7 +195,7 @@ ALTER TABLE ONLY public.shortens
 
 
 --
--- TOC entry 3185 (class 2606 OID 35363)
+-- TOC entry 3186 (class 2606 OID 35363)
 -- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -203,7 +204,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 3187 (class 2606 OID 35361)
+-- TOC entry 3188 (class 2606 OID 35361)
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -221,7 +222,7 @@ ALTER TABLE ONLY public.sessions
 
 
 --
--- TOC entry 3196 (class 2606 OID 35376)
+-- TOC entry 3198 (class 2606 OID 35412)
 -- Name: shortens shortens_userId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -229,7 +230,7 @@ ALTER TABLE ONLY public.shortens
     ADD CONSTRAINT "shortens_userId_fkey" FOREIGN KEY ("userId") REFERENCES public.users(id);
 
 
--- Completed on 2023-03-03 22:00:47 UTC
+-- Completed on 2023-03-03 23:38:57 UTC
 
 --
 -- PostgreSQL database dump complete
