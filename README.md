@@ -1,1 +1,1 @@
-# projeto17-shortly
+# api-shortly
