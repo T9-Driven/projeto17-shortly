@@ -7,9 +7,10 @@ export async function signIn(req, res) {
 
   const { rows: users } = await db.query(`SELECT * FROM users WHERE email = $1`, [email])
 
+  const [user] = users
+
   if (!users) return res.sendStatus(401)
 
-  const [user] = users
   if (bcrypt.compareSync(password, user.password)) {
     const token = uuid();
 
