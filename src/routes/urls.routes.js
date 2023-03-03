@@ -5,14 +5,14 @@ import { validateSchema } from "../middlewares/schemaValidator.js";
 
 const router = Router();
 
-router.post(
-  "/urls/shorten",
-  validateSchema(urlSchema),
-  authValidation,
-  () => { }
-);
+// router.post(
+//   "/urls/shorten",
+//   validateSchema(urlSchema),
+//   authValidation,
+//   () => { }
+// );
 router.get("/urls/:id", () => { });
-router.delete("/urls/:id", authValidation, () => { });
+// router.delete("/urls/:id", authValidation, () => { });
 router.get("/urls/open/:shortUrl", () => { });
 
 export default router;

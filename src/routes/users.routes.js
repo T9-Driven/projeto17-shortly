@@ -3,7 +3,7 @@ import { Router } from "express";
 
 const router = Router();
 
-router.get("/users/me", authValidation, () => { });
+// router.get("/users/me", authValidation, () => { });
 router.get("/ranking", () => { });
 
 export default router;
